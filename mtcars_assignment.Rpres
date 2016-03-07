@@ -17,7 +17,7 @@ Exploratory Data Analysis: Dataset has 32 observations on 11 variables.
 
 ```{r}
 dim(mtcars)
-head(mtcars)
+head(mtcars,3)
 ```
 
 Figure 1 - Boxplot of MPG vs. Transmission 
