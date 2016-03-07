@@ -4,25 +4,35 @@ author: Amit Kohli
 date: March 6, 2016
 autosize: true
 
-First Slide
+Executive Summary
 ========================================================
 
-For more details on authoring R presentations please visit <https://support.rstudio.com/hc/en-us/articles/200486468>.
+This report analyzes mtcars dataset to explore if an automatic or manual transmission is better for cars in terms of miles per gallon (MPG) and quantifying the difference between both types of transmissions. The reports uncovers a strong relationship between vehicle weight and transmission type, but there is still a statistically significant increase in the mean value of gas mileage attributable to manual transmissions – between 0.05 and 5.8 mpg.
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+By checking correlations, weight variable affects the fuel economy the most - and by plotting MPG and weight against transmission types (*Figures 1 & 2*) -- the report reveals that weight difference for transmissions is stronger than MPG difference. 
 
-Slide With Code
+
+Exploratory Data Analysis: Dataset has 32 observations on 11 variables.
 ========================================================
 
 ```{r}
-summary(mtcars)
+dim(mtcars)
+head(mtcars)
 ```
 
-Slide With Plot
+Figure 1 - Boxplot of MPG vs. Transmission 
 ========================================================
 
 ```{r, echo=FALSE}
-plot(mtcars)
+par(mfrow = c(1, 2))
+transmission <- factor(mtcars$am, levels=0:1, labels=c("Automatic", "Manual"))
+plot(transmission, mtcars$mpg, xlab="Transmission Type", ylab="MPG",col="green")
+plot(transmission, mtcars$wt, xlab="Transmission Type", ylab="Weight (1000lb)",col="blue")
+```
+
+Figure 2 - Pair Graph of Motor Trend Dataset 
+========================================================
+
+```{r, echo=FALSE}
+pairs(mtcars, panel=panel.smooth, col=blues9)
 ```
